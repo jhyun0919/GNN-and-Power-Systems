@@ -137,3 +137,5 @@ codes/yapf_note.py
 *.code-workspace
 
 codes/formatter_note.py
+
+codes/.DS_Store

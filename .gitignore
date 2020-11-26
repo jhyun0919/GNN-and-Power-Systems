@@ -139,3 +139,9 @@ codes/yapf_note.py
 codes/formatter_note.py
 
 codes/.DS_Store
+
+data/.DS_Store
+
+Power Flow Approx based on GCN/data/
+
+.DS_Store

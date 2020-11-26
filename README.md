@@ -1,2 +1,2 @@
-# GNN-and-Poewr-Systems
+# GNN-and-Power-Systems
 

@@ -1,2 +1,2 @@
-# GNN-for-DC-OPF
-Shauhui's research project repository
+# GNN-and-Power-Systems
+

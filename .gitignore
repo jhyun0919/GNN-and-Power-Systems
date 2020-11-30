@@ -145,3 +145,49 @@ data/.DS_Store
 Power Flow Approx based on GCN/data/
 
 .DS_Store
+
+formatting_note.py
+
+matpower7.1.zip
+
+Power Flow Approx based on GCN/codes/Texas2000_June2016.m
+
+Power Flow Approx based on GCN/codes/case39.m
+
+Power Flow Approx based on GCN/codes/matpower7.1/mptest/
+
+Power Flow Approx based on GCN/codes/matpower7.1/mp-opt-model/
+
+Power Flow Approx based on GCN/codes/matpower7.1/most/
+
+Power Flow Approx based on GCN/codes/matpower7.1/mips/
+
+Power Flow Approx based on GCN/codes/matpower7.1/extras/
+
+Power Flow Approx based on GCN/codes/matpower7.1/docs/
+
+Power Flow Approx based on GCN/codes/matpower7.1/docker/
+
+Power Flow Approx based on GCN/codes/matpower7.1/data/
+
+Power Flow Approx based on GCN/codes/matpower7.1/.travis/
+
+Power Flow Approx based on GCN/codes/matpower7.1/.github/
+
+Power Flow Approx based on GCN/codes/matpower7.1/README.md
+
+Power Flow Approx based on GCN/codes/matpower7.1/LICENSE
+
+Power Flow Approx based on GCN/codes/matpower7.1/install_matpower.m
+
+Power Flow Approx based on GCN/codes/matpower7.1/CONTRIBUTING.md
+
+Power Flow Approx based on GCN/codes/matpower7.1/.dockerignore
+
+Power Flow Approx based on GCN/codes/matpower7.1/CITATION
+
+Power Flow Approx based on GCN/codes/matpower7.1/CHANGES.md
+
+Power Flow Approx based on GCN/codes/matpower7.1/AUTHORS
+
+Power Flow Approx based on GCN/codes/matpower7.1/.travis.yml

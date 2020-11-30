@@ -6,6 +6,7 @@ import numpy as np
 import pickle
 import time
 from datetime import timedelta
+from datetime import datetime
 
 start_time = time.time()
 
@@ -29,9 +30,9 @@ case_name = vars(args)["i"]
 sample_num = vars(args)["n"]
 # dist_scale = vars(args)["d"]
 
-print(">input args")
-print("\t- case_name: {}".format(case_name))
-print("\t- number of samples = {}".format(sample_num))
+print("> input args")
+print("  - case_name: {}".format(case_name))
+print("  - number of samples = {}".format(sample_num))
 # print("\t- uncertainty distribution scaling coeff = {}".format(dist_scale))
 
 current_dir = os.getcwd()
@@ -71,11 +72,12 @@ os.chdir(current_dir)
 
 dataset_dir = os.path.join("../data", "GCN_datasets")
 dataset_name = case_name.split(".")[0]
-dataset_path = os.path.join(dataset_dir, dataset_name)
+dt = datetime.now().strftime("%Y.%m.%d-%H:%M:%S")
+dataset_path = os.path.join(dataset_dir, dataset_name) + "_" + dt + ".pickle"
 
-outfile = open(dataset_path + ".pickle", "wb")
+outfile = open(dataset_path, "wb")
 pickle.dump(dataset, outfile)
 outfile.close()
 
-print("> the dataset is saved as '{}'".format(dataset_path + ".pickle"))
+print("> the dataset is saved as '{}'".format(dataset_path))
 print("> execution time: {}".format(str(timedelta(seconds=time.time() - start_time))))

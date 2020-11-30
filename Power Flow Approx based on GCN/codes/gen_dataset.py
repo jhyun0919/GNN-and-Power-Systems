@@ -73,7 +73,14 @@ os.chdir(current_dir)
 dataset_dir = os.path.join("../data", "GCN_datasets")
 dataset_name = case_name.split(".")[0]
 dt = datetime.now().strftime("%Y.%m.%d-%H:%M:%S")
-dataset_path = os.path.join(dataset_dir, dataset_name) + "_" + dt + ".pickle"
+dataset_path = (
+    os.path.join(dataset_dir, dataset_name)
+    + "_"
+    + str(sample_num)
+    + "_"
+    + dt
+    + ".pickle"
+)
 
 outfile = open(dataset_path, "wb")
 pickle.dump(dataset, outfile)

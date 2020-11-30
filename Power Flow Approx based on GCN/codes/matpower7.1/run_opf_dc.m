@@ -27,8 +27,8 @@ function [output] = run_opf_dc(data_name, dist_scale)
 
     % store the useful solution info
     Pg = results.gen(:, PG);
-    Pd = mpc.bus(:, 3)
-    Qd = mpc.bus(:, 4)
+    Pd = mpc.bus(:, 3);
+    Qd = mpc.bus(:, 4);
     F_act = results.branch(:, PF);
     F_max = mpc.branch(:, 6);
     % GB_map = mpc.gen(:, 1);

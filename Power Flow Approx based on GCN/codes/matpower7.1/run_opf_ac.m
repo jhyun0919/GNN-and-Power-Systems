@@ -22,13 +22,13 @@ function [output] = run_opf_ac(data_name, dist_scale)
         mpc.bus(row_idx, 4) = mpc.bus(row_idx, 4) - Q_uncertainty;
     end
 
-    % run dc-opf solver
+    % run ac-opf solver
     results = runopf(mpc, mpopt);
 
     % store the useful solution info
     Pg = results.gen(:, PG);
-    Pd = mpc.bus(:, 3)
-    Qd = mpc.bus(:, 4)
+    Pd = mpc.bus(:, 3);
+    Qd = mpc.bus(:, 4);
     F_act = results.branch(:, PF);
     F_max = mpc.branch(:, 6);
     % GB_map = mpc.gen(:, 1);

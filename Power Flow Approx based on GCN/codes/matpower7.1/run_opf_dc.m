@@ -1,26 +1,31 @@
-function [output] = run_opf_dc(data_name, dist_scale)
+function [output] = run_opf_dc(data_name)
     % load the case data
     define_constants;
     mpc = loadcase(data_name);
     mpopt = mpoption('verbose', 0, 'out.all', 1);
 
     % create the uncertainty
-    P_w = [];
-    Q_w = [];
+    % P_w = [];
+    % Q_w = [];
 
     shape = size(mpc.bus);
-    for row_idx = 1:shape(1)
-        mean = 0;
-        P_std = abs(dist_scale * mpc.bus(row_idx, 3));
-        P_uncertainty = normrnd(mean,P_std);
-        P_w(end+1) = P_uncertainty;
-        mpc.bus(row_idx, 3) = mpc.bus(row_idx, 3) - P_uncertainty;
+    a = 0.5;
+    b = 1.5;
+    r = (b-a).*rand(shape(1),1) + a;
 
-        Q_std = abs(dist_scale * mpc.bus(row_idx, 4));
-        Q_uncertainty = normrnd(mean,Q_std);
-        Q_w(end+1) = Q_uncertainty;
-        mpc.bus(row_idx, 4) = mpc.bus(row_idx, 4) - Q_uncertainty;
-    end
+    % for row_idx = 1:shape(1)
+    %     mean = 0;
+    %     P_std = abs(dist_scale * mpc.bus(row_idx, 3));
+    %     P_uncertainty = normrnd(mean,P_std);
+    %     P_w(end+1) = P_uncertainty;
+    %     mpc.bus(row_idx, 3) = mpc.bus(row_idx, 3) - P_uncertainty;
+
+    %     Q_std = abs(dist_scale * mpc.bus(row_idx, 4));
+    %     Q_uncertainty = normrnd(mean,Q_std);
+    %     Q_w(end+1) = Q_uncertainty;
+    %     mpc.bus(row_idx, 4) = mpc.bus(row_idx, 4) - Q_uncertainty;
+    % end
+    mpc.bus(:, 3) = mpc.bus(:, 3).*r;
 
     % run dc-opf solver
     results = rundcopf(mpc, mpopt);

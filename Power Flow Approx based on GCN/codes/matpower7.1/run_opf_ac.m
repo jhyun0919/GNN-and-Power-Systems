@@ -2,7 +2,7 @@ function [output] = run_opf_ac(data_name, dist_scale)
     % load the case data
     define_constants;
     mpc = loadcase(data_name);
-    mpopt = mpoption('verbose', 0, 'out.all', 1);
+    mpopt = mpoption('verbose', 0, 'out.all', 0);
 
     % create the uncertainty
     P_w = [];

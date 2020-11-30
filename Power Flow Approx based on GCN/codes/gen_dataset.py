@@ -63,10 +63,16 @@ for i in trange(sample_num):
     # label data
     F_act = np.asarray(data["F_act"])
     F_max = np.asarray(data["F_max"])
+    del_idx = []
+    for idx, (f_act, f_max) in enumerate(zip(F_act, F_max)):
+        if f_max == 0:
+            del_idx.append(idx)
+    F_act = np.delete(F_act, del_idx)
+    F_max = np.delete(F_max, del_idx)
     label = (F_act / F_max) * 100
     labels.append(label)
 
-dataset = {"feature": np.array(features), "label": np.array(labels)}
+dataset = {"feature": np.array(features).squeeze(), "label": np.array(labels)}
 
 os.chdir(current_dir)
 

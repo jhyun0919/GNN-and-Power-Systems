@@ -7,6 +7,7 @@ import pickle
 import time
 from datetime import timedelta
 from datetime import datetime
+from sys import exit
 
 start_time = time.time()
 
@@ -15,36 +16,33 @@ my_parser.add_argument("-i", action="store", help="input mat file name")
 my_parser.add_argument(
     "-n", action="store", type=int, help="the number of generated samples"
 )
-# my_parser.add_argument(
-#     "-d",
-#     action="store",
-#     type=float,
-#     default=0.01,
-#     help="the scaling coefficent of uncertainty distributions",
-# )
 
 
 args = my_parser.parse_args()
 
 case_name = vars(args)["i"]
 sample_num = vars(args)["n"]
-# dist_scale = vars(args)["d"]
 
 print("> input args")
 print("  - case_name: {}".format(case_name))
 print("  - number of samples = {}".format(sample_num))
-# print("\t- uncertainty distribution scaling coeff = {}".format(dist_scale))
+
+THRESHOLD = False
+THRESHOLD_1 = 100
+THRESHOLD_2 = int(0.1 * (sample_num))
+
+# generate the dataset by Matpower
+print("> start generating dastaset")
 
 current_dir = os.getcwd()
 os.chdir("./matpower7.1/")
-
-print("> start generating dastaset")
 
 eng = matlab.engine.start_matlab()
 
 features = []
 labels = []
 
+threshold_tick = 0
 for i in trange(sample_num):
     # solve opf with perturbed data
     data = eng.run_opf_ac(case_name)
@@ -58,7 +56,6 @@ for i in trange(sample_num):
         )
     )
     feature = np.expand_dims(feature, axis=1)
-    features.append(feature)
 
     # label data
     F_act = np.asarray(data["F_act"])
@@ -70,12 +67,28 @@ for i in trange(sample_num):
     F_act = np.delete(F_act, del_idx)
     F_max = np.delete(F_max, del_idx)
     label = (F_act / F_max) * 100
-    labels.append(label)
+    label = np.expand_dims(label, axis=1)
 
-dataset = {"feature": np.array(features).squeeze(), "label": np.array(labels)}
+    # append a sample
+    # ... if Fmax is not ZERO
+    if len(label) == 0:
+        threshold_tick += 1
+        if threshold_tick > THRESHOLD_1:
+            THRESHOLD = True
+        elif threshold_tick > THRESHOLD_2:
+            THRESHOLD = True
+        if THRESHOLD:
+            print("-------- terminate the iteration --------")
+            exit()
+    else:
+        features.append(feature)
+        labels.append(label)
 
+
+dataset = {"feature": np.array(features), "label": np.array(labels)}
+
+# save the generated dataset
 os.chdir(current_dir)
-
 dataset_dir = os.path.join("../data", "GCN_datasets")
 dataset_name = case_name.split(".")[0]
 dt = datetime.now().strftime("%Y.%m.%d-%H:%M:%S")

@@ -53,6 +53,7 @@ class FCN1(tf.keras.Model):
         super(FCN1, self).__init__()
         self.N_o = N_o()
         self.neighbor = neighboring_func()
+        self.flatten = tf.keras.layers.Flatten()
         self.dense = tf.keras.layers.Dense(d_node_num, activation="relu")
 
     def call(self, x):
@@ -70,6 +71,7 @@ class FCN2(tf.keras.Model):
         super(FCN2, self).__init__()
         self.N_o = N_o()
         self.neighbor = neighboring_func()
+        self.flatten = tf.keras.layers.Flatten()
         self.dense = tf.keras.layers.Dense(d_node_num, activation="relu")
 
     def call(self, x):
@@ -86,6 +88,7 @@ class GCN1(tf.keras.Model):
         super(GCN1, self).__init__()
         self.N_o = N_o()
         self.neighbor = neighboring_func()
+        self.flatten = tf.keras.layers.Flatten()
         self.dense = tf.keras.layers.Dense(d_node_num, activation="relu")
         self.conv1 = tf.keras.layers.Conv1D(30, activation="relu")
         self.conv2 = tf.keras.layers.Conv1D(20, activation="relu")
@@ -107,6 +110,7 @@ class GCN2(tf.keras.Model):
         super(GCN2, self).__init__()
         self.N_o = N_o()
         self.neighbor = neighboring_func()
+        self.flatten = tf.keras.layers.Flatten()
         self.dense = tf.keras.layers.Dense(d_node_num, activation="relu")
         self.conv = tf.keras.layers.Conv1D(20, activation="relu")
 

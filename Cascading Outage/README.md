@@ -1,6 +1,6 @@
 # Cascading Outage and GNN
 
-- codes
+- [codes](https://github.com/jhyun0919/GNN-and-Power-Systems/tree/master/Cascading%20Outage/codes)
 
   1. Generate Datasets
   2. EDA the Datasets
@@ -9,8 +9,8 @@
   5. Train the Model
   6. Tune the Hyper-Parameters
 
-- datasets
+- [datasets](https://github.com/jhyun0919/GNN-and-Power-Systems/tree/master/Cascading%20Outage/datasets)
 
-    - case9-bus
-    - case39-bus
-    - case2383-bus
+  - case9-bus
+  - case39-bus
+  - case2383-bus

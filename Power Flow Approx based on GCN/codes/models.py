@@ -51,8 +51,8 @@ def N_o(x):
 class FCN1(tf.keras.Model):
     def __init__(self, d_node_num):
         super(FCN1, self).__init__()
-        self.N_o = N_o()
-        self.neighbor = neighboring_func()
+        self.N_o = N_o
+        self.neighbor = neighboring_func
         self.flatten = tf.keras.layers.Flatten()
         self.dense = tf.keras.layers.Dense(d_node_num, activation="relu")
 
@@ -69,8 +69,8 @@ class FCN1(tf.keras.Model):
 class FCN2(tf.keras.Model):
     def __init__(self, d_node_num):
         super(FCN2, self).__init__()
-        self.N_o = N_o()
-        self.neighbor = neighboring_func()
+        self.N_o = N_o
+        self.neighbor = neighboring_func
         self.flatten = tf.keras.layers.Flatten()
         self.dense = tf.keras.layers.Dense(d_node_num, activation="relu")
 
@@ -86,8 +86,8 @@ class FCN2(tf.keras.Model):
 class GCN1(tf.keras.Model):
     def __init__(self, ratio, d_node_num):
         super(GCN1, self).__init__()
-        self.N_o = N_o()
-        self.neighbor = neighboring_func()
+        self.N_o = N_o
+        self.neighbor = neighboring_func
         self.flatten = tf.keras.layers.Flatten()
         self.dense = tf.keras.layers.Dense(d_node_num, activation="relu")
         self.conv1 = tf.keras.layers.Conv1D(30, activation="relu")
@@ -95,7 +95,7 @@ class GCN1(tf.keras.Model):
 
     def call(self, x):
         x = self.N_o(x)
-        x = self.self.dense(x)
+        x = self.dense(x)
 
         x = self.conv1(x)
         x = self.conv1(x)
@@ -108,15 +108,15 @@ class GCN1(tf.keras.Model):
 class GCN2(tf.keras.Model):
     def __init__(self, ratio, d_node_num):
         super(GCN2, self).__init__()
-        self.N_o = N_o()
-        self.neighbor = neighboring_func()
+        self.N_o = N_o
+        self.neighbor = neighboring_func
         self.flatten = tf.keras.layers.Flatten()
         self.dense = tf.keras.layers.Dense(d_node_num, activation="relu")
         self.conv = tf.keras.layers.Conv1D(20, activation="relu")
 
     def call(self, x):
         x = self.N_o(x)
-        x = self.self.dense(x)
+        x = self.dense(x)
 
         x = self.conv(x)
         x = self.conv(x)

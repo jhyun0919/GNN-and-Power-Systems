@@ -195,3 +195,11 @@ Power Flow Approx based on GCN/codes/matpower7.1/.travis.yml
 Cascading Outage/ref papaers/
 
 Cascading Outage/cosmic/
+
+cosmic/
+
+Cascading Outage/datasets/case9/
+
+Cascading Outage/datasets/case39/
+
+Cascading Outage/datasets/case2383/

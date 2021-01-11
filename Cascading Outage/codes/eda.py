@@ -47,7 +47,7 @@ def show_ps_graph(case_name):
     plt.show()  # display
 
 
-def show_plot(case_name, data_time_stamp, i):
+def show_plot(case_name, data_time_stamp, i, ref=True):
 
     data_type = [
         "delta",
@@ -65,7 +65,10 @@ def show_plot(case_name, data_time_stamp, i):
     print("> Data type: {}".format(data_type[i]))
 
     # set file_name
-    file_dir = path.join("../datasets/", case_name)
+    if ref:
+        file_dir = path.join("../datasets/ref/", case_name)
+    else:
+        file_dir = path.join("../datasets/", case_name)
     file_name = data_type[i] + "_sim_" + case_name + "_" + data_time_stamp + ".csv"
     file_name = path.join(file_dir, file_name)
 

@@ -1,3 +1,4 @@
+from datetime import time
 import pandas as pd
 from os import path
 import matplotlib.pyplot as plt
@@ -89,7 +90,7 @@ def show_plot(case_name, data_time_stamp, i, ref=True):
     data.plot(xlabel="time", ylabel=data_types[i], figsize=(12, 8), legend=True)
 
 
-def show_dist(case_name, i):
+def show_dist(case_name, i, time_at=0):
     data_types = [
         "delta",
         "omega",
@@ -106,14 +107,14 @@ def show_dist(case_name, i):
     print("> Data type: {}".format(data_types[i]))
 
     file_names = glob.glob("../datasets/" + case_name + "/" + data_types[i] + "*")
-    data_t0 = []
+    data_at_t = []
     for file_name in file_names:
         data = pd.read_csv(file_name, index_col=0, header=None)
-        data_t0.append(list(data.iloc[0]))
-    data_t0 = np.array(data_t0)
-    print(np.linalg.matrix_rank(data_t0))
+        data_at_t.append(list(data.iloc[time_at]))
+    data_at_t = np.array(data_at_t)
+    print(np.linalg.matrix_rank(data_at_t))
 
-    for i in range(data_t0.shape[1]):
-        sns.boxplot(data=data_t0[:, i])
+    for i in range(data_at_t.shape[1]):
+        sns.boxplot(data=data_at_t[:, i])
         # sns.histplot(data_t0[:, i])
 

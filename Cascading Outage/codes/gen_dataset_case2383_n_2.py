@@ -34,8 +34,6 @@ os.chdir("../cosmic/matlab/")
 
 eng = matlab.engine.start_matlab()
 
-eng.write_ps_csv("../../datasets/case2383", 2383)
-
 for i in range(1, num_branches + 1):
     for j in range(i, num_branches + 1):
         if i == j:

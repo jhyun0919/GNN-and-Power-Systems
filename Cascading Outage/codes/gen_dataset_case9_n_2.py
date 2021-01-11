@@ -34,8 +34,6 @@ os.chdir("../cosmic/matlab/")
 
 eng = matlab.engine.start_matlab()
 
-eng.write_ps_csv("../../datasets/case9", 9)
-
 for i in range(1, num_branches + 1):
     for j in range(i, num_branches + 1):
         if i == j:
@@ -46,7 +44,7 @@ for i in range(1, num_branches + 1):
             print()
             print("> tripped branch index: {} & {}".format(i, j))
             print()
-            for k in range(num_samples):
+            for k in trange(num_samples):
                 eng.sim_case9_n_2(i, j, "../../datasets/case9", k, False, False)
 
                 for filename in glob.glob("../../datasets/case9/sim*"):

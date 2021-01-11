@@ -15,7 +15,16 @@ args = my_parser.parse_args()
 num_samples = vars(args)["n"]
 
 num_branches = 46
-failure_pairs = [(2, 9), (2, 29), (8, 29), (9, 13), (23, 25), (23, 26), (23, 32)]
+failure_pairs = [
+    (2, 9),
+    (2, 29),
+    (8, 29),
+    (9, 13),
+    (23, 25),
+    (23, 26),
+    (23, 32),
+    (29, 30),
+]
 
 num_outage_pairs = (num_branches * (num_branches - 1) / 2) - len(failure_pairs)
 
@@ -34,9 +43,7 @@ os.chdir("../cosmic/matlab/")
 
 eng = matlab.engine.start_matlab()
 
-eng.write_ps_csv("../../datasets/case39", 39)
-
-for i in range(23, num_branches + 1):
+for i in range(29, num_branches + 1):
     for j in range(i, num_branches + 1):
         if i == j:
             pass

@@ -43,7 +43,7 @@ os.chdir("../cosmic/matlab/")
 
 eng = matlab.engine.start_matlab()
 
-for i in range(29, num_branches + 1):
+for i in range(33, num_branches + 1):
     for j in range(i, num_branches + 1):
         if i == j:
             pass

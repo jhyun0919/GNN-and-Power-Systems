@@ -2,8 +2,8 @@
 
 - [codes](https://github.com/jhyun0919/GNN-and-Power-Systems/tree/master/Cascading%20Outage/codes)
 
-  1. Generate Datasets
-  2. EDA the Datasets
+  1. [Generate Datasets](https://github.com/jhyun0919/GNN-and-Power-Systems/blob/master/Cascading%20Outage/codes/1.%20Generate%20Datasets.ipynb)
+  2. [EDA the Datasets](https://github.com/jhyun0919/GNN-and-Power-Systems/blob/master/Cascading%20Outage/codes/2.%20EDA.ipynb)
   3. Design the GNN Based Model Architechure
   4. Build the Model
   5. Train the Model

@@ -57,19 +57,31 @@ def show_ps_graph(case_name, save_fig=False):
 def show_plot(case_name, data_time_stamp, i, ref=True):
 
     data_types = [
-        "delta",
         "omega",
+        "delta",
         "Pm",
-        "Eap",
-        "Vmag",
-        "theta",
-        "E1",
+        "Eap",  # ???
+        "E1",  # ???
         "Efd",
-        "P3",
+        "theta",
+        "Vmag",
         "Temperature",
+        # "P3: a intermediate differential variable in the PI controller.",
+    ]
+    data_type_descript = [
+        "omega = an angle speed of the rotor.",
+        "delta = an angle of the rotor.",
+        "Pm = a mechanical power input of the machine.",
+        "Eap = a transient open circuit voltage magnitude of the generator.",  # ???
+        "E1 = the first saturation point of the exciter.",
+        "Efd = a voltage magnituge of the machine exciter output (field voltage).",
+        "theta = a voltage angle of the bus.",
+        "Vmag = a voltage magnituge of the bus.",
+        "Temperature = a temperature of the line.",
+        # "P3: a intermediate differential variable in the PI controller.",
     ]
 
-    print("> Data type: {}".format(data_types[i]))
+    print("> Data type: {}".format(data_type_descript[i]))
 
     # set file_name
     if ref:
@@ -92,16 +104,16 @@ def show_plot(case_name, data_time_stamp, i, ref=True):
 
 def show_dist(case_name, i, time_at=0):
     data_types = [
-        "delta",
         "omega",
+        "delta",
         "Pm",
-        "Eap",
-        "Vmag",
-        "theta",
-        "E1",
+        "Eap",  # ???
+        "E1",  # ???
         "Efd",
-        "P3",
+        "theta",
+        "Vmag",
         "Temperature",
+        # "P3: a intermediate differential variable in the PI controller.",
     ]
 
     print("> Data type: {}".format(data_types[i]))

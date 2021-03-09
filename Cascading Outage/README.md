@@ -1,5 +1,7 @@
 # Cascading Outage and GNN
 
+## 0. TL;DR
+
 - [codes](https://github.com/jhyun0919/GNN-and-Power-Systems/tree/master/Cascading%20Outage/codes)
 
   1. [Generate Datasets](https://github.com/jhyun0919/GNN-and-Power-Systems/blob/master/Cascading%20Outage/codes/1.%20Generate%20Datasets.ipynb)
